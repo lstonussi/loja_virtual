@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
             ),
             textColor: Colors.white,
             onPressed: () {
-              //O pushreplacement substitui a pagina anterior pela nova
+              //O pushreplacement substitui a pagina anterior pela nova, e ao voltar volta para a tela anterior ao do login nesse caso
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => SignUpScreen(),
@@ -38,8 +38,11 @@ class LoginScreen extends StatelessWidget {
               keyboardType: TextInputType.emailAddress,
               //text é o proprio texto do campo
               validator: (text) {
-                if (text.isEmpty || !text.contains('@'))
+                if (text.isEmpty || !text.contains('@')) {
                   return "E-mail inválido";
+                }
+                //Sempre tem que retornar alguma coisa, utiliza-se o null
+                return null;
               },
             ),
             SizedBox(
@@ -49,7 +52,11 @@ class LoginScreen extends StatelessWidget {
               decoration: InputDecoration(hintText: 'Senha'),
               obscureText: true,
               validator: (text) {
-                if (text.isEmpty || text.length < 6) return "Senha inválida";
+                if (text.isEmpty || text.length < 6) {
+                  return "Senha inválida";
+                }
+                //Sempre tem que retornar alguma coisa, utiliza-se o null
+                return null;
               },
             ),
             Align(
